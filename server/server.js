@@ -2,10 +2,13 @@ const fs = require('fs');
 const path = require('path');
 const WebSocket = require('ws');
 
-// Configuración del servidor WebSocket
-const wss = new WebSocket.Server({ port: 8080 });
+// Usa el puerto proporcionado por Render o el puerto 8080 como predeterminado
+const port = process.env.PORT || 8080;
 
-console.log('Servidor WebSocket escuchando en el puerto 8080');
+// Configuración del servidor WebSocket
+const wss = new WebSocket.Server({ port });
+
+console.log(`Servidor WebSocket escuchando en el puerto ${port}`);
 
 // Ruta del archivo JSON
 const filePath = path.join(__dirname, '../data/input.json');
